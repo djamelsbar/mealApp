@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './screens/category_screen.dart';
 main() {
   runApp(MyApp());
 }
@@ -16,11 +16,24 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            accentColor: Colors.pinkAccent, primaryColor: Colors.green),
+            accentColor: Colors.amberAccent,
+            canvasColor: Color.fromRGBO(255, 254, 229, 1),
+            textTheme: ThemeData.light().textTheme.copyWith(
+              bodyText1: TextStyle(
+                color: Color.fromRGBO(20, 50, 50, 1)
+              ),
+              bodyText2: TextStyle(
+                color: Color.fromRGBO(20, 50, 50, 1)
+              ),
+              headline1: TextStyle(
+                fontSize: 24,
+                fontFamily:  'RobotoCondensed'
+              ),
+            ),
+            primarySwatch: Colors.pink),
         home: Scaffold(
           appBar: AppBar(title: Text("Meal App")),
-          body: Container(
-          ),
+          body: CategoryScreen(),
         ));
   }
 }
