@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealapp/screens/category_meals_screen.dart';
+import 'package:mealapp/screens/meal_detail_screen.dart';
 import './screens/category_screen.dart';
 
 main() {
@@ -37,6 +38,7 @@ class _MyAppState extends State<MyApp> {
           );
         },
         CategoryMealsScreen.routeName:(context)=>CategoryMealsScreen(),
+        MealDetailScreen.routName : (context)=>MealDetailScreen(),
       },
     );
   }
