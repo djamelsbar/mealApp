@@ -24,14 +24,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       return meal.categories.contains(category.id);
     }).toList();
     super.didChangeDependencies();
-  }
-   
-  
-  void _removeMeal(String mealId){
-    setState(() {
-      categoryMeals.removeWhere((meal) => meal.id==mealId);
-    });
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
