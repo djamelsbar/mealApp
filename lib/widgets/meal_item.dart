@@ -16,13 +16,18 @@ class MealItem extends StatelessWidget {
       @required this.title,
       @required this.duration,
       @required this.complexity,
-      @required this.affordability
+      @required this.affordability,
   });
 
   void selectMeal(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
       MealDetailScreen.routName,
-      arguments: id,);
+      arguments: id,).then((result) {
+        // if(result != null)  removeItem(result); 
+        // else{
+
+        // }
+      });
   }
 
 

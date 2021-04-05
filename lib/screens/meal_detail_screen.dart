@@ -3,6 +3,10 @@ import 'package:mealapp/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static String routName = 'meal_detail';
+  final Function toggleFavorites;
+  final Function _isMealFavorites;
+  const MealDetailScreen(this.toggleFavorites,this._isMealFavorites);
+
 
   Widget buildSectionTitle(BuildContext ctx, String text) {
     return Container(
@@ -27,8 +31,7 @@ class MealDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments as String;
-    final selectMeal =
-        DUMMY_MEALS.firstWhere((element) => element.id == mealId);
+    final selectMeal = DUMMY_MEALS.firstWhere((element) => element.id == mealId);
 
     return Scaffold(
       appBar: AppBar(
@@ -71,6 +74,12 @@ class MealDetailScreen extends StatelessWidget {
               itemCount: selectMeal.steps.length,
             )),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed:()=> toggleFavorites(mealId),
+        child: Icon(
+          _isMealFavorites(mealId) ? Icons.star : Icons.star_border 
         ),
       ),
     );
