@@ -5,10 +5,17 @@ import 'package:mealapp/models/tabs_screen.dart';
 import 'package:mealapp/screens/category_meals_screen.dart';
 import 'package:mealapp/screens/filtters_screen.dart';
 import 'package:mealapp/screens/meal_detail_screen.dart';
+import 'package:mealapp/screens/p_view.dart';
+import 'package:mealapp/splashscreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-main() {
-  runApp(MyApp());
-}
+main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool p_viewed = prefs.getBool('p_viewed');
+  Widget _screen = (p_viewed == false || p_viewed==null) ? Pview() : MyApp();
+  runApp(_screen);
+} 
 
 class MyApp extends StatefulWidget {
   @override
@@ -64,6 +71,7 @@ class _MyAppState extends State<MyApp> {
   bool _isMealFavorites(String mealId){
     return _favoriteMeals.any((meal) => meal.id == mealId);
   }
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
